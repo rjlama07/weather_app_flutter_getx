@@ -13,7 +13,10 @@ class ReuseableRow extends StatelessWidget {
       // height: 50,
       width: double.maxFinite,
       decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(12)),
+          color: Theme.of(context).brightness == Brightness.light
+              ? Colors.white
+              : Colors.black54,
+          borderRadius: BorderRadius.circular(12)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [Text(title), Text(info)],
