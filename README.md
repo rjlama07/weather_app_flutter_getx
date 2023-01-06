@@ -1,16 +1,10 @@
 # weatheria
 
-A new Flutter project.
+This app show the realtime weather information of different city. This app is made using flutter framework. Getx state mamangement is used in this project. OpenweatherMap API is used for the data.
 
-## Getting Started
+# Screenshots
+<img src="https://user-images.githubusercontent.com/109976988/210512207-29472640-be22-4348-b63a-ff0c7afc91e4.png" width="250">
+<img src="https://user-images.githubusercontent.com/109976988/210512268-23a30f60-b826-4a6e-a8b7-b9c170734608.png" width="250">
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# App Overview
+<img src="https://user-images.githubusercontent.com/109976988/210515087-cf819ed2-ceaa-4168-a407-d6f27c1a624f.gif" width="250">
