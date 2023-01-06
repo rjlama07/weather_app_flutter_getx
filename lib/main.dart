@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:weatheria/controller/dark_mode_controller.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:weatheria/screens/homepage.dart';
+import 'package:weatheria/screens/homepage/homepage.dart';
+import 'package:weatheria/screens/splashpage/splash.dart';
 
 Future<void> main() async {
   await Hive.initFlutter();
@@ -24,8 +25,14 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
           ),
           home: const HomePage(),
-          getPages: [GetPage(name: "/homepage", page: () => const HomePage())],
-          initialRoute: "/homepage",
+          getPages: [
+            GetPage(name: "/homepage", page: () => const HomePage()),
+            GetPage(
+              name: "/splashScreen",
+              page: () => const SplashScreen(),
+            )
+          ],
+          initialRoute: "/splashScreen",
         ));
   }
 }

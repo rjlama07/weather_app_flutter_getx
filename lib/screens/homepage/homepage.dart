@@ -45,7 +45,7 @@ class HomePage extends StatelessWidget {
                             style: TextStyle(
                                 color: Theme.of(context).brightness ==
                                         Brightness.light
-                                    ? Colors.white
+                                    ? Colors.black54
                                     : Colors.grey[200],
                                 fontSize: 12,
                                 fontWeight: FontWeight.w400),

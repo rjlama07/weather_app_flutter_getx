@@ -12,7 +12,6 @@ class API {
     if (response.statusCode == 200) {
       return WeatherModel.fromJson(data);
     } else {
-      print("cannot fetch api");
       return WeatherModel.fromJson(data);
     }
   }
