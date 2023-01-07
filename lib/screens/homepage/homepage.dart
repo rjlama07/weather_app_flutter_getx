@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 
 import 'package:weatheria/controller/apicontroller.dart';
 import 'package:weatheria/controller/dark_mode_controller.dart';
@@ -67,76 +68,104 @@ class HomePage extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  Center(
-                    child: ElevatedButton(
-                        onPressed: () => controller.search(),
-                        child: const Text("Search")),
-                  ),
                   const SizedBox(
                     height: 20,
                   ),
                   Obx(() => controller.isloading.value
                       ? const Center(child: CircularProgressIndicator())
-                      : Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              controller.weatherData.value.name.toString(),
-                              style: const TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                            ),
-                            Center(
-                                child: Column(
+                      : controller.isCityfound.value
+                          ? Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Image.network(
-                                  "https://openweathermap.org/img/w/${controller.weatherData.value.weather![0].icon}.png",
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.2,
-                                  fit: BoxFit.cover,
-                                ),
                                 Text(
-                                  controller.weatherData.value.main!.temp
-                                      .toString(),
-                                  style: const TextStyle(
-                                      fontSize: 40,
-                                      fontWeight: FontWeight.w700),
-                                ),
-                                Text(
-                                  controller.weatherData.value.weather![0].main
-                                      .toString()
-                                      .toUpperCase(),
+                                  controller.weatherData.value.name.toString(),
                                   style: const TextStyle(
                                       fontSize: 20,
-                                      fontWeight: FontWeight.w600),
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Center(
+                                    child: Column(
+                                  children: [
+                                    Image.network(
+                                      "https://openweathermap.org/img/w/${controller.weatherData.value.weather![0].icon}.png",
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.2,
+                                      fit: BoxFit.cover,
+                                    ),
+                                    Text(
+                                      controller.weatherData.value.main!.temp
+                                          .toString(),
+                                      style: const TextStyle(
+                                          fontSize: 40,
+                                          fontWeight: FontWeight.w700),
+                                    ),
+                                    Text(
+                                      controller
+                                          .weatherData.value.weather![0].main
+                                          .toString()
+                                          .toUpperCase(),
+                                      style: const TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w600),
+                                    )
+                                  ],
+                                )),
+                                const SizedBox(
+                                  height: 80,
+                                ),
+                                Obx(
+                                  () => Column(
+                                    children: [
+                                      ReuseableRow(
+                                          title: "Humidity",
+                                          info: controller
+                                              .weatherData.value.main!.humidity
+                                              .toString()),
+                                      ReuseableRow(
+                                          title: "Pressure",
+                                          info: controller
+                                              .weatherData.value.main!.pressure
+                                              .toString()),
+                                      ReuseableRow(
+                                          title: "Windspeed",
+                                          info: controller
+                                              .weatherData.value.wind!.speed
+                                              .toString()),
+                                    ],
+                                  ),
                                 )
                               ],
-                            )),
-                            const SizedBox(
-                              height: 80,
-                            ),
-                            Obx(
-                              () => Column(
+                            )
+                          : Center(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  ReuseableRow(
-                                      title: "Humidity",
-                                      info: controller
-                                          .weatherData.value.main!.humidity
-                                          .toString()),
-                                  ReuseableRow(
-                                      title: "Pressure",
-                                      info: controller
-                                          .weatherData.value.main!.pressure
-                                          .toString()),
-                                  ReuseableRow(
-                                      title: "Windspeed",
-                                      info: controller
-                                          .weatherData.value.wind!.speed
-                                          .toString()),
+                                  Lottie.asset("assets/images/notFound.json",
+                                      alignment: Alignment.center,
+                                      fit: BoxFit.contain,
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.5),
+                                  Text(
+                                    "Oops",
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.01,
+                                  ),
+                                  Text(
+                                    "City Not Found",
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  )
                                 ],
                               ),
-                            )
-                          ],
-                        ))
+                            ))
                 ],
               ),
             ),

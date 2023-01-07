@@ -3,15 +3,15 @@ class WeatherModel {
   List<Weather>? weather;
   String? base;
   Main? main;
-  int? visibility;
+  num? visibility;
   Wind? wind;
   Clouds? clouds;
-  int? dt;
+  num? dt;
   Sys? sys;
-  int? timezone;
-  int? id;
+  num? timezone;
+  num? id;
   String? name;
-  int? cod;
+  String? cod;
 
   WeatherModel(
       {this.coord,
@@ -46,7 +46,7 @@ class WeatherModel {
     timezone = json['timezone'];
     id = json['id'];
     name = json['name'];
-    cod = json['cod'];
+    cod = json['cod'].toString();
   }
 
   Map<String, dynamic> toJson() {
@@ -81,8 +81,8 @@ class WeatherModel {
 }
 
 class Coord {
-  double? lon;
-  double? lat;
+  num? lon;
+  num? lat;
 
   Coord({this.lon, this.lat});
 
@@ -100,7 +100,7 @@ class Coord {
 }
 
 class Weather {
-  int? id;
+  num? id;
   String? main;
   String? description;
   String? icon;
@@ -129,8 +129,8 @@ class Main {
   double? feelsLike;
   double? tempMin;
   double? tempMax;
-  int? pressure;
-  int? humidity;
+  num? pressure;
+  num? humidity;
 
   Main(
       {this.temp,
@@ -197,11 +197,11 @@ class Clouds {
 }
 
 class Sys {
-  int? type;
-  int? id;
+  num? type;
+  num? id;
   String? country;
-  int? sunrise;
-  int? sunset;
+  num? sunrise;
+  num? sunset;
 
   Sys({this.type, this.id, this.country, this.sunrise, this.sunset});
 
